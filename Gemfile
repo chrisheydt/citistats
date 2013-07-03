@@ -30,5 +30,4 @@ gem 'jquery-rails'
 
 gem 'httparty'
 gem 'pg'
-gem 'active_enum'
 gem 'paper_trail'
