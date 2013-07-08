@@ -14,8 +14,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_enum (0.9.12)
-      activesupport (~> 3.0)
     activemodel (3.2.11)
       activesupport (= 3.2.11)
       builder (~> 3.0.0)
@@ -113,7 +111,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_enum
   coffee-rails (~> 3.2.1)
   httparty
   jquery-rails

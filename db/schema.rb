@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702135128) do
+ActiveRecord::Schema.define(:version => 20130708231219) do
 
   create_table "station_proximities", :force => true do |t|
     t.integer  "station_id"
@@ -30,9 +30,21 @@ ActiveRecord::Schema.define(:version => 20130702135128) do
     t.integer  "available_bike_count"
     t.integer  "available_dock_count"
     t.datetime "created_at"
+    t.integer  "station_summary_id"
   end
 
+  add_index "station_snapshots", ["station_summary_id"], :name => "index_station_snapshots_on_station_summary_id"
   add_index "station_snapshots", ["status"], :name => "index_station_snapshots_on_status"
+
+  create_table "station_summaries", :force => true do |t|
+    t.integer  "active_stations"
+    t.integer  "total_stations"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "last_update",     :limit => 8
+  end
+
+  add_index "station_summaries", ["last_update"], :name => "index_station_summaries_on_last_update"
 
   create_table "stations", :force => true do |t|
     t.integer  "citibike_station_id"

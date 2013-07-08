@@ -8,6 +8,20 @@ class StationsService
   
   def ingest_station_snapshots
     response = fetch_station_data
+    last_update = response['lastUpdate']
+    last_update_captured = StationSummary.last_update
+    
+    if last_update <= last_update_captured.to_i
+      Rails.logger.info "last_update timestamp in response (#{last_update}) is not newer than the last captured timestamp #{last_update_captured}"
+      return
+    end
+    
+    summary = StationSummary.new
+    summary.active_stations = response['activeStations']
+    summary.total_stations = response['totalStations']
+    summary.last_update = last_update
+    summary.save!
+    
     response['results'].each do |result|
       station = Station.find_by_citibike_station_id(result['id']) || Station.new
       station.citibike_station_id = result['id']
@@ -19,6 +33,7 @@ class StationsService
       
       snap = StationSnapshot.new
       snap.station = station
+      snap.station_summary = summary
       snap.status = result['status']
       snap.available_bike_count = result['availableBikes']
       snap.available_dock_count = result['availableDocks']
