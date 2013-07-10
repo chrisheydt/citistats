@@ -1,0 +1,2 @@
+# if you wanna be cool like me, just copy this file to .rvmrc
+rvm use ruby-1.9.3-p286@citistats --create
