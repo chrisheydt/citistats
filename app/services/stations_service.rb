@@ -3,7 +3,7 @@ class StationsService
   base_uri 'http://appservices.citibikenyc.com'
   
   def fetch_station_data
-    logger.info 'Fetching station snapshots...'
+    Rails.logger.info 'Fetching station snapshots...'
     self.class.get('/data2/stations.php')
   end
   
@@ -13,7 +13,7 @@ class StationsService
     last_update_captured = StationSummary.last_update
     
     if last_update <= last_update_captured.to_i
-      logger.info "last_update timestamp in response (#{last_update}) is not newer than the last captured timestamp #{last_update_captured}"
+      Rails.logger.info "last_update timestamp in response (#{last_update}) is not newer than the last captured timestamp #{last_update_captured}"
       return
     end
     
