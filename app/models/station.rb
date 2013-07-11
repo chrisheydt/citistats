@@ -6,4 +6,11 @@ class Station < ActiveRecord::Base
   validates :longitude, presence: true, numericality: true
   
   has_many :snapshots, class_name: 'StationSnapshot'
+  
+  # delegate to the current snapshot for status info
+  delegate :status, :available_bike_count, :available_dock_count, :to => :current_snapshot, :allow_nil => true
+  
+  def current_snapshot
+    @current_snapshot ||= snapshots.last
+  end  
 end

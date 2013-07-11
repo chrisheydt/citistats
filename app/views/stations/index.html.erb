@@ -1,0 +1,26 @@
+<h1>Stations</h1>
+  
+<table id="stations-table">
+  <tr>
+    <th>ID</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Label</th>
+    <th>Address</th>
+    <th>Status</th>
+    <th>Available Bikes</th>
+    <th>Available Docks</th>
+  </tr>
+  <% for station in @stations %>
+    <tr>
+      <td><%= station.citibike_station_id %></td>
+      <td><%= station.latitude %></td>
+      <td><%= station.longitude %></td>
+      <td><%= station.label %></td>
+      <td><%= station.address %></td>
+      <td><%= link_to(station.status, station_snapshots_path(station)) %></td>
+      <td><%= station.available_bike_count %></td>
+      <td><%= station.available_dock_count %></td>
+    </tr>
+  <% end %>
+</table>

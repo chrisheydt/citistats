@@ -1,0 +1,20 @@
+<h1>Station Snapshots</h1>
+<h2>Station ID: <%= @station.citibike_station_id %></h2>
+
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Status</th>
+    <th>Available Bikes</th>
+    <th>Available Docks</th>
+  </tr>
+  <% for s in @snapshots %>
+    <tr>
+      <td><%= s.created_at %></td>
+      <td><%= s.status %></td>
+      <td><%= s.available_bike_count %></td>
+      <td><%= s.available_dock_count %></td>
+    </tr>
+  <% end %>
+</table>
+      
