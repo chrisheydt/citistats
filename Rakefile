@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Citislurp::Application.load_tasks
+Citistats::Application.load_tasks
