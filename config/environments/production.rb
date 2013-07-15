@@ -50,6 +50,7 @@ Citistats::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: 'ec2-54-218-101-221.us-west-2.compute.amazonaws.com' }
 
   # Enable threaded mode
   # config.threadsafe!

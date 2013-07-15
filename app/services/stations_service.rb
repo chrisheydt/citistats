@@ -30,7 +30,9 @@ class StationsService
       station.longitude = result['longitude']
       station.label = result['label']
       station.address = result['stationAddress']
-      station.save!
+      if station.new_record? && station.save!
+        StationsMailer.new_station(station).deliver
+      end
       
       snap = StationSnapshot.new
       snap.station = station

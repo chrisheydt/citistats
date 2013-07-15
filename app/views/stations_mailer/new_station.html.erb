@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New Station!</h1>
+    <p>Name: <%= @station.label %></h1>
+    <p>Created: <%= @station.created_at %></p>
+    <p><%= link_to('Check it out', station_snapshots_url(@station) )%></p>
+  </body>
+</html>
