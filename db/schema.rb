@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708231219) do
+ActiveRecord::Schema.define(:version => 20131210024700) do
 
   create_table "station_proximities", :force => true do |t|
     t.integer  "station_id"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(:version => 20130708231219) do
   add_index "stations", ["citibike_station_id"], :name => "index_stations_on_citibike_station_id"
   add_index "stations", ["latitude"], :name => "index_stations_on_latitude"
   add_index "stations", ["longitude"], :name => "index_stations_on_longitude"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false
